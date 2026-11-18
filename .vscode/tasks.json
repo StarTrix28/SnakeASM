@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build NASM x64",
+            "type": "shell",
+            "command": "nasm -f win64 main.asm -o main.obj && gcc main.obj -o main.exe -nostartfiles -e CMAIN -lkernel32 && main.exe",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/d", "/c"]
+                },
+                "env": {
+                    "PATH": "C:\\Program Files (x86)\\SASM\\NASM;C:\\Program Files (x86)\\SASM\\MinGW64\\bin;C:\\Program Files (x86)\\SASM\\MinGW\\bin;${env:PATH}"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "clear": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
